@@ -4,7 +4,7 @@
 void WriteVersion()
 {
 #ifndef __WIN32__
-	FILE* fp(fopen("VERSION.txt", "w"));
+	FILE* fp(fopen("version.txt", "w"));
 
 	if (NULL != fp)
 	{
@@ -14,7 +14,7 @@ void WriteVersion()
 	}
 	else
 	{
-		fprintf(stderr, "cannot open VERSION.txt\n");
+		fprintf(stderr, "cannot open version.txt\n");
 		exit(0);
 	}
 #endif

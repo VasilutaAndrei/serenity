@@ -18,7 +18,7 @@ void CMoneyLog::Save()
 		return;
 	for (BYTE bType = 0; bType < MONEY_LOG_TYPE_MAX_NUM; bType ++)
 	{
-		typeof(m_MoneyLogContainer[bType].begin()) it;
+		 __typeof(m_MoneyLogContainer[bType].begin()) it;
 		for (it = m_MoneyLogContainer[bType].begin(); it != m_MoneyLogContainer[bType].end(); ++it)
 		{
 			//bType;
@@ -39,10 +39,10 @@ void CMoneyLog::Save()
 	   for (BYTE bType = 0; bType < MONEY_LOG_TYPE_MAX_NUM; bType++)
 	   {
 	//"INSERT INTO money_log%s VALUES('%s', %d, %d, %d)", CClientManager::instance().GetTablePostfix(),
-	typeof(m_MoneyLogContainer[bType].begin()) it;
+	 __typeof(m_MoneyLogContainer[bType].begin()) it;
 	for (it = m_MoneyLogContainer[bType].begin(); it != m_MoneyLogContainer[bType].end(); ++it)
 	{
-	typeof(it->second.begin())
+	 __typeof(it->second.begin())
 	}
 	}
 

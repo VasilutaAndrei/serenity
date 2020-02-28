@@ -1,4 +1,4 @@
-CC = g++
+CC = g++49
 
 DB_VERSION = $(shell cat ../../__REVISION__)
 
@@ -18,7 +18,7 @@ DEPFILE = Depend
 endif
 
 # Project Flags
-CFLAGS = -m32 -g -Wall -O2 -pipe -fno-rtti -fno-exceptions -Wno-long-long -pthread -D_THREAD_SAFE
+CFLAGS = -m32 -g -w -O2 -pipe -fno-rtti -fno-exceptions -Wno-long-long -pthread -D_THREAD_SAFE -std=c++11
 
 # Version defines
 CFLAGS += -D__USER__=\"$(USER)\" -D__HOSTNAME__=\"$(HOSTNAME)\" -D__PWD__=\"$(PWD)\" -D__DB_VERSION__=\"$(DB_VERSION)\"
@@ -55,7 +55,6 @@ endif
 # PROJECT_OBJ_FILES END
 
 # Target Paths
-# MAIN_TARGET = $(BINDIR)/db_r$(DB_VERSION)
 MAIN_TARGET = $(BINDIR)/db
 
 default: $(MAIN_TARGET)
@@ -76,18 +75,14 @@ $(OBJDIR):
 	@mkdir $(OBJDIR)
 
 symlink:
-	# @ln -fs db_r$(DB_VERSION) $(BINDIR)/db_symlink
-	@ln -fs db $(BINDIR)/db_symlink
+	@ln -fs db_r$(DB_VERSION) $(BINDIR)/db_symlink
 
 strip:
-	# @cp $(BINDIR)/db_r$(DB_VERSION) $(BINDIR)/db_r
-	# @strip $(BINDIR)/db_r
-	@cp $(BINDIR)/db $(BINDIR)/db
-	@strip $(BINDIR)/db
+	@cp $(BINDIR)/db_r$(DB_VERSION) $(BINDIR)/db_r
+	@strip $(BINDIR)/db_r
 
 clean:
-	# @rm -f $(CPPOBJS) $(BINDIR)/db_r*
-	@rm -f $(CPPOBJS) $(BINDIR)/db*
+	@rm -f $(CPPOBJS) $(BINDIR)/db_r*
 
 dep:
 ifeq ($(ENABLE_GCC_AUTODEPEND), 1)
